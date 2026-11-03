@@ -1,0 +1,22 @@
+name: "Build weekly and on push to main"
+
+on:
+  push:
+    branches: ["main"]
+  schedule:
+  - cron: "0 7 * * 0"
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: "ubuntu-slim"
+    steps:
+    - uses: "actions/checkout@v3d3c42e5aac5ba805825da76410c181273ba90b1" # v7.0.1
+    - uses: "mr-smithers-excellent/docker-build-push@v3714eb54de0c1b0f96899c36190090b21cd44a6e" # v7.1
+      with:
+        image: "kubectl-jq"
+        addLatest: true
+        addTimestamp: true
+        registry: "ghcr.io"
+        username: "${{ github.actor }}"
+        password: "${{ secrets.GITHUB_TOKEN }}"
