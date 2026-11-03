@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: "ubuntu-slim"
+    runs-on: "ubuntu-latest"
     steps:
     - uses: "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1" # v7.0.1
     - uses: "mr-smithers-excellent/docker-build-push@3714eb54de0c1b0f96899c36190090b21cd44a6e" # v7.1
